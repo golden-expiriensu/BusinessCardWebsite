@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "react-responsive-carousel": "^3.2.21"
+  },
+  "dependencies": {
+    "react-scroll": "^1.8.4"
+  }
+}
