@@ -1,50 +1,40 @@
-import React, { Component } from 'react';
-import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { NavBlock } from "./Portfolio";
 
 export class PortfolioNavMenu extends Component {
   static displayName = PortfolioNavMenu.name;
 
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.toggleNavbar = this.toggleNavbar.bind(this);
     this.state = {
-      collapsed: true
+      collapsed: false
     };
   }
 
-  toggleNavbar () {
+  toggleNavbar() {
     this.setState({
       collapsed: !this.state.collapsed
     });
   }
 
-  render () {
+  render() {
     return (
-      <header>
-        <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" light>
-          <Container>
-            <NavbarBrand tag={Link} to="/"><h1>Danil Menkin</h1></NavbarBrand>
-            <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-            <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
-              <ul className="navbar-nav flex-grow">
-                <NavItem>
-                  <NavLink tag={Link} className="text-info" to="/"><h3>Home</h3></NavLink>
-                </NavItem>
-                <span className="text-info align-self-center">●</span>
-                <NavItem>
-                  <NavLink tag={Link} className="text-info" to="/portfolio"><h3>Portfolio</h3></NavLink>
-                </NavItem>
-                <span className="text-info align-self-center">●</span>
-                <NavItem>
-                  <NavLink tag={Link} className="text-info" to="/about-me"><h3>About me</h3></NavLink>
-                </NavItem>
-              </ul>
-            </Collapse>
-          </Container>
-        </Navbar>
-      </header>
+      <div className="fixed-top d-none d-xl-block">
+        {this.state.collapsed
+          ? <div>
+              <button className="btn btn-info m-2" onClick={this.toggleNavbar}>
+                Content
+              </button>
+            </div>
+          : <div
+              className="position-absolute mt-5 pt-5"
+              style={{ left: 0 }}
+            >
+              <NavBlock isNavBar={true} onclick={this.toggleNavbar} />
+            </div>}
+      </div>
     );
   }
 }

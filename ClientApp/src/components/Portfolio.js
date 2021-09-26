@@ -59,26 +59,8 @@ export class Portfolio extends Component {
     return (
       <div className="container-fluid lead">
         <PortfolioNavMenu />
-        <div class="d-flex flex-column p-2 mb-2 text-center">
-          <h2 className="display-3">Content:</h2>
-          <div class="d-flex flex-column align-items-center mw-50 mb-3">
-            <Link className="m-2 btn btn-info" to="Unity" smooth={true}>
-              <h4>Unity projects</h4>
-            </Link>
-            <Link className="m-2 btn btn-info" to="CSharp" smooth={true}>
-              <h4>C# projects</h4>
-            </Link>
-            <Link className="m-2 btn btn-info" to="Web" smooth={true}>
-              <h4>Web projects</h4>
-            </Link>
-            <Link
-              className="m-2 btn btn-info"
-              to="Another projects"
-              smooth={true}
-            >
-              <h4>Another projects</h4>
-            </Link>
-          </div>
+        <div className="d-xl-none mx-auto col-xs-12 col-sm-8 col-md-6 col-lg-4">
+          <NavBlock isNavBar={false} />
         </div>
         <Element name="Unity">
           <this.Unity />
@@ -229,16 +211,18 @@ export class Portfolio extends Component {
               </ArcherElement>
             </div>
             <div className="p-1 d-block d-md-none">
-                John 1800 3 "xyo"
-                <br />Karl 900 1 "idp"
-                <br />АнJackтон 3200 14 "rtr"
-                <br />John 100 9 "xyo"
-                <br />Karl 1400 11 "idp"
-                <br />Jack 4400 2 "rtr"
-                <br />Karl 800 9 "idp"
-              </div>
+              John 1800 3 "xyo"
+              <br />Karl 900 1 "idp"
+              <br />АнJackтон 3200 14 "rtr"
+              <br />John 100 9 "xyo"
+              <br />Karl 1400 11 "idp"
+              <br />Jack 4400 2 "rtr"
+              <br />Karl 800 9 "idp"
+            </div>
           </div>
-          <span className="d-block d-md-none mx-auto">Will be converted to</span>
+          <span className="d-block d-md-none mx-auto">
+            Will be converted to
+          </span>
           <div className="border rounded offset-lg-4 offset-md-2 col-lg-3 col-md-5 col-xs-12 bg-dark text-light">
             <ArcherElement id="txtAfter">
               <div className="p-1">
@@ -344,4 +328,32 @@ export class Portfolio extends Component {
       </div>
     );
   }
+}
+
+export function NavBlock(props) {
+  var title = props.isNavBar
+    ? <button className="m-2 btn btn-primary" onClick={props.onclick}>
+        <h3 className="text-center">Content:</h3>
+      </button>
+    : <h2 className="display-3 text-center">Content</h2>;
+
+  return (
+    <div className="d-flex flex-column p-2 mb-2">
+      {title}
+      <div className="d-flex flex-column mb-3">
+        <Link className="m-2 btn btn-info" to="Unity" smooth={true}>
+          <h4>Unity projects</h4>
+        </Link>
+        <Link className="m-2 btn btn-info" to="CSharp" smooth={true}>
+          <h4>C# projects</h4>
+        </Link>
+        <Link className="m-2 btn btn-info" to="Web" smooth={true}>
+          <h4>Web projects</h4>
+        </Link>
+        <Link className="m-2 btn btn-info" to="Another projects" smooth={true}>
+          <h4>Another projects</h4>
+        </Link>
+      </div>
+    </div>
+  );
 }
