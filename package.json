@@ -4,6 +4,7 @@
   },
   "dependencies": {
     "react-archer": "^3.2.2",
-    "react-scroll": "^1.8.4"
+    "react-scroll": "^1.8.4",
+    "react-unity-webgl": "^8.5.1"
   }
 }

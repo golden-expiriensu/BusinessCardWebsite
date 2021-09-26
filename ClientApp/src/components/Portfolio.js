@@ -3,14 +3,19 @@ import SampleCarousel from "./SampleCarousel";
 import { SliderData as SCTxtPSliderData } from "./CarouselData/SC/TxtP";
 import { SliderData as SCFiguresSliderData } from "./CarouselData/SC/Figures";
 import { SliderData as WebRessaSliderData } from "./CarouselData/Web/Ressa";
+import { SliderData as UHarvestSliderData } from "./CarouselData/Unity/Harvest";
 import { Link, Element } from "react-scroll";
 import { ArcherContainer, ArcherElement } from "react-archer";
 import { MiniTitleWithLinkOnDarkBG as MiniTitleWithLink } from "./MiniTitleWithLinkOnDarkBG";
+import { PortfolioNavMenu } from "./PortfolioNavMenu";
+import { MemoryGame } from "./MemoryGame";
 
 export class Portfolio extends Component {
   constructor(props) {
     super(props);
     this.Unity = this.Unity.bind(this);
+    this.Harvest = this.Harvest.bind(this);
+    this.Memory = this.Memory.bind(this);
     this.CSharp = this.CSharp.bind(this);
     this.TxtParser = this.TxtParser.bind(this);
     this.TxtBeforeAfter = this.TxtBeforeAfter.bind(this);
@@ -53,6 +58,7 @@ export class Portfolio extends Component {
   render() {
     return (
       <div className="container-fluid lead">
+        <PortfolioNavMenu />
         <div class="d-flex flex-column p-2 mb-2 text-center">
           <h2 className="display-3">Content:</h2>
           <div class="d-flex flex-column align-items-center mw-50 mb-3">
@@ -94,6 +100,58 @@ export class Portfolio extends Component {
     return (
       <div>
         <this.BigCategoryHeader text="Unity projects" />
+        <div class="d-flex flex-column align-items-center mw-50 mb-3">
+          <Link className="m-2 btn btn-info" to="Harvest" smooth={true}>
+            <h4>Harvest</h4>
+          </Link>
+          <Link className="m-2 btn btn-info" to="Memory" smooth={true}>
+            <h4>Memory</h4>
+          </Link>
+        </div>
+        <Element name="Harvest">
+          <this.Harvest />
+        </Element>
+        <Element name="Memory">
+          <this.Memory />
+        </Element>
+      </div>
+    );
+  }
+
+  Harvest() {
+    return (
+      <div>
+        <this.ConcreteProjectHeader text="Harvest" />
+        <p className="text-justify">
+          A mobile game in which the player controls a tractor that collects
+          crops in a maze. The goal of the game is to go through the labyrinth
+          levels, while collecting the required number of points. The player
+          receives points when collecting crops. Different crops give different
+          points. The player also has indicators of the amount of remaining
+          gasoline and the state of the tractor. Gasoline and health can be
+          restored by collecting canisters and repair kits.
+        </p>
+        <SampleCarousel slides={UHarvestSliderData} />
+        <this.FullCodeGitHubLink href="https://github.com/golden-expiriensu/Harvest" />
+      </div>
+    );
+  }
+
+  Memory() {
+    return (
+      <div>
+        <this.ConcreteProjectHeader text="Memory" />
+        <p>
+          A game in the genre of "find the match". The player can choose the
+          number of cards and the skin of the deck. In the browser version, the
+          menu button is blocked, and accordingly there is no choice of skins.
+          The full version of the game with skins is stored in the GitHub.
+        </p>
+        <h3 className="text-center text-danger">
+          Below is a stripped-down version of the game
+        </h3>
+        <MemoryGame />
+        <this.FullCodeGitHubLink text="https://github.com/golden-expiriensu/memory" />
       </div>
     );
   }
@@ -147,18 +205,30 @@ export class Portfolio extends Component {
     return (
       <ArcherContainer offset={20}>
         <div className="row mb-3">
-          <div className="border rounded offset-md-1 col-md-3 col-sm-4 col-xs-12 bg-dark text-light">
-            <ArcherElement
-              id="txtBefore"
-              relations={[
-                {
-                  targetId: "txtAfter",
-                  targetAnchor: "left",
-                  sourceAnchor: "right"
-                }
-              ]}
-            >
-              <div className="p-1">
+          <div className="border rounded offset-lg-1 col-lg-3 col-md-5 col-xs-12 bg-dark text-light">
+            <div className="d-md-block d-sm-none d-xs-none">
+              <ArcherElement
+                id="txtBefore"
+                relations={[
+                  {
+                    targetId: "txtAfter",
+                    targetAnchor: "left",
+                    sourceAnchor: "right"
+                  }
+                ]}
+              >
+                <div className="p-1">
+                  John 1800 3 "xyo"
+                  <br />Karl 900 1 "idp"
+                  <br />АнJackтон 3200 14 "rtr"
+                  <br />John 100 9 "xyo"
+                  <br />Karl 1400 11 "idp"
+                  <br />Jack 4400 2 "rtr"
+                  <br />Karl 800 9 "idp"
+                </div>
+              </ArcherElement>
+            </div>
+            <div className="p-1 d-block d-md-none">
                 John 1800 3 "xyo"
                 <br />Karl 900 1 "idp"
                 <br />АнJackтон 3200 14 "rtr"
@@ -167,9 +237,9 @@ export class Portfolio extends Component {
                 <br />Jack 4400 2 "rtr"
                 <br />Karl 800 9 "idp"
               </div>
-            </ArcherElement>
           </div>
-          <div className="border rounded offset-md-4 offset-sm-4 col-md-3 col-sm-4 col-xs-12 bg-dark text-light">
+          <span className="d-block d-md-none mx-auto">Will be converted to</span>
+          <div className="border rounded offset-lg-4 offset-md-2 col-lg-3 col-md-5 col-xs-12 bg-dark text-light">
             <ArcherElement id="txtAfter">
               <div className="p-1">
                 Jack 7600 16 53600 "rtr"
@@ -237,8 +307,8 @@ export class Portfolio extends Component {
         <div className="mt-3">
           <MiniTitleWithLink
             linkHref="http://zavodgm.ru/"
-            linkText="Follow me!"
-            title="View site:"
+            linkText="View site"
+            title=""
           />
         </div>
       </div>
@@ -268,8 +338,8 @@ export class Portfolio extends Component {
         <this.ConcreteProjectHeader text={"Another projects: "} />
         <MiniTitleWithLink
           linkHref="https://github.com/golden-expiriensu/"
-          linkText="Click me)"
-          title="My GitHub:"
+          linkText="My GitHub"
+          title=""
         />
       </div>
     );
