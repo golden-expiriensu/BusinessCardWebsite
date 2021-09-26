@@ -18,7 +18,7 @@ export class Home extends Component {
       <div>
         <Navbar className="border-bottom box-shadow mb-3" light>
           <Container>
-            <ul className="navbar-nav flex-grow mx-auto">
+            <ul className="navbar-nav flex-grow mx-auto text-center">
               <NavItem>
                 <NavLink tag={Link} className="text-info" to="/portfolio">
                   <h3 className="display-2">Portfolio</h3>
@@ -32,7 +32,9 @@ export class Home extends Component {
             </ul>
           </Container>
         </Navbar>
-        <SampleCarousel slides={SliderData} height="90vh" />
+        <div className="mb-2" >
+          <SampleCarousel slides={SliderData} height="90vh" />
+        </div>
       </div>
     );
   }
