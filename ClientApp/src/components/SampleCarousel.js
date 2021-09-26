@@ -11,7 +11,7 @@ function SampleCarousel(props) {
         src={slide.image}
         alt={slide.alt}
       />
-      <p className="legend">{slide.alt}</p>
+      <p className="legend d-none d-lg-block">{slide.alt}</p>
     </div>
   );
 
