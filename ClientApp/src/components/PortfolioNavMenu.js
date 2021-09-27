@@ -9,7 +9,7 @@ export class PortfolioNavMenu extends Component {
 
     this.toggleNavbar = this.toggleNavbar.bind(this);
     this.state = {
-      collapsed: false
+      collapsed: true
     };
   }
 

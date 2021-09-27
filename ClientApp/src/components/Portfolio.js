@@ -28,9 +28,14 @@ export class Portfolio extends Component {
 
   BigCategoryHeader(props) {
     return (
-      <h1 className="m-2 mb-3 text-center p-2 display-1 border-top">
-        {props.text}
-      </h1>
+      <div className="m-2 mb-3 text-center p-2 border-top">
+        <h1 className="display-1 d-none d-sm-block">
+          {props.text}
+        </h1>
+        <h1 className="display-4 d-sm-none">
+          {props.text}
+        </h1>
+      </div>
     );
   }
 
@@ -188,7 +193,7 @@ export class Portfolio extends Component {
       <ArcherContainer offset={20}>
         <div className="row mb-3">
           <div className="border rounded offset-lg-1 col-lg-3 col-md-5 col-xs-12 bg-dark text-light">
-            <div className="d-md-block d-sm-none d-xs-none">
+            <div className="d-md-block d-none">
               <ArcherElement
                 id="txtBefore"
                 relations={[

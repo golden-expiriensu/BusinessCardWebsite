@@ -21,12 +21,12 @@ export class Home extends Component {
             <ul className="navbar-nav flex-grow mx-auto text-center">
               <NavItem>
                 <NavLink tag={Link} className="text-info" to="/portfolio">
-                  <h3 className="display-2">Portfolio</h3>
+                  <this.NavTitle text={"Portfolio"} />
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={Link} className="text-info" to="/about-me">
-                  <h3 className="display-2">About me</h3>
+                  <this.NavTitle text={"About me"} />
                 </NavLink>
               </NavItem>
             </ul>
@@ -37,5 +37,15 @@ export class Home extends Component {
         </div>
       </div>
     );
+  }
+
+  NavTitle(props){
+    return (
+      <div>
+        <h3 className="display-3 d-sm-none">{props.text}</h3>
+        <h3 className="display-2 d-none d-sm-block d-md-none">{props.text}</h3>
+        <h3 className="display-1 d-none d-md-block">{props.text}</h3>
+      </div>
+    )
   }
 }
